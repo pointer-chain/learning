@@ -5172,3 +5172,28 @@ ac_account_map = {
     "ac_business_registration__c": "business_registration",
     "ac_current_accounting_software__c": "current_accounting_software",
 }
+
+ac_account_map_ = {
+    'company_name': 'company_name',
+    'company_name_2': 'ac_company_name_2__c',
+    'customer_type': 'customer_type',
+    'contacts': 'contact_id',
+    'position': 'ac_position__c',
+    'mobile': 'phone',
+    'public_sea': 'ac_lead_pool__c',
+    'customer_owner': 'owner_id',
+    'detailed_address': 'detailed_address',
+    'is_accounting_company': 'ac_is_accounting_company__c',
+    'total_account_books': 'ac_total_account_books__c',
+    'accountant_count': 'ac_accountant_count__c',
+    'customer_needs': 'ac_customer_needs__c',
+    'customer_level': 'account_level_id',
+    'customer_creation_time': 'create_time',
+    'creator': 'creator_id',
+    'latest_modification_date': 'update_time',
+    'claim_date': 'ac_claim_date__c',
+    'latest_modifier': 'updater_id',
+    'department': 'org_id',
+    'business_registration': 'ac_business_registration__c',
+    'current_accounting_software': 'ac_current_accounting_software__c',
+}
