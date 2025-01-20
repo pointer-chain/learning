@@ -68,14 +68,23 @@ class CustomerXlrd(object):
             city2 = city_id.get(province[index_city], {}).get("city", {}).get(city[index_city], {}).get("id", {})
             city3 = city_id.get(province[index_city], {}).get("city", {}).get(city[index_city], {}).get("city", {}).get(district[index_city], {})
             ids = [x for x in [city1, city2, city3] if x]
+            names_list = [province[index_city], city[index_city], district[index_city]]
+            names = []
+            for x in names_list:
+                try:
+                    if math.isnan(x):
+                        continue
+                except:
+                    ...
+                names.append(x)
             if not ids:
                 self.row += 1
                 continue
             res = {
                 "ids": ids,
                 "code": ids[-1],
-                "names": [province[index_city], city[index_city], district[index_city]],
-                "search_key": f"{province[index_city]}{city[index_city]}{district[index_city]}",
+                "names": names,
+                "search_key": "".join(names),
             }
             print(f"正在处理第【{self.row}】行, 第【{self.col}】数据")
             self.ws.write(self.row, self.col, str(res))
