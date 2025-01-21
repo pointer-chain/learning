@@ -5157,7 +5157,7 @@ ac_account_map = {
     "company_name": "company_name",
     "ac_company_name_2__c": "company_name_2",
     "customer_type": "customer_type",
-    "contact_id": "contacts",
+    "contact_id": "contacts_id",
     "ac_position__c": "position",
     "phone": "mobile",
     "ac_lead_pool__c": "public_sea",
@@ -5182,7 +5182,7 @@ ac_account_map_ = {
     'company_name': 'company_name',
     'company_name_2': 'ac_company_name_2__c',
     'customer_type': 'customer_type',
-    'contacts': 'contact_id',
+    'contacts_id': 'contact_id',
     'position': 'ac_position__c',
     'mobile': 'phone',
     'public_sea': 'ac_lead_pool__c',
@@ -5201,4 +5201,5 @@ ac_account_map_ = {
     'department': 'org_id',
     'business_registration': 'ac_business_registration__c',
     'current_accounting_software': 'ac_current_accounting_software__c',
+    'customer_id': 'id',
 }
