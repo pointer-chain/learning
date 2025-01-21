@@ -5153,31 +5153,6 @@ DICT_CONFIG = {
     "customer_level": account_lever,
 }
 
-ac_account_map = {
-    "company_name": "company_name",
-    "ac_company_name_2__c": "company_name_2",
-    "customer_type": "customer_type",
-    "contact_id": "contacts_id",
-    "ac_position__c": "position",
-    "phone": "mobile",
-    "ac_lead_pool__c": "public_sea",
-    "owner_id": "customer_owner",
-    "city_id_add_1": "province",
-    "city_id_add_2": "city",
-    "city_id_add_3": "district",
-    "detailed_address": "detailed_address",
-    "ac_is_accounting_company__c": "is_accounting_company",
-    "ac_total_account_books__c": "total_account_books",
-    "ac_accountant_count__c": "accountant_count",
-    "ac_customer_needs__c": "customer_needs",
-    "account_level_id": "customer_level",
-    "create_time": "customer_creation_time",
-    "creator_id": "creator", "update_time": "latest_modification_date",
-    "ac_claim_date__c": "claim_date", "updater_id": "latest_modifier", "org_id": "department",
-    "ac_business_registration__c": "business_registration",
-    "ac_current_accounting_software__c": "current_accounting_software",
-}
-
 ac_account_map_ = {
     'company_name': 'company_name',
     'company_name_2': 'ac_company_name_2__c',

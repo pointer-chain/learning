@@ -101,3 +101,6 @@ class CustomerXlrd(object):
         excel_data = pd.read_excel(self.create_table_name)
         # 将数据保存为CSV文件
         excel_data.to_csv(self.csv_name, index=False)
+
+    def numpy_excel_ac_contact(self):
+        pass
