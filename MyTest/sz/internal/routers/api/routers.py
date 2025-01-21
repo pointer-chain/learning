@@ -16,12 +16,14 @@ class SzApi(object):
         return json.loads(res.text)
 
     def add_lead_pool(self, name):
+        self.header.update({"content-type": "application/json;charset=UTF-8"})
         a = {"values": {"name": name, "belong_org": ["1"], "admin_roles": ["0HDTGHKTC2592"], "lead_confirm_limit": 0,
                         "lead_loop_confirm_interval": 0,
                         "lead_first_follow_limit": 0, "lead_record_follow_limit": 0, "lead_to_opportunity_limit": 0,
                         "collection_limit": 0, "opportunity_record_follow_limit": 0,
                         "opportunity_transaction_limit": 0}}
         res = requests.post(self.config.add_lead_pool_url(), data=json.dumps(a), headers=self.header)
+        print(res.text)
         return res
 
     def add_account(self, name):

@@ -1,3 +1,6 @@
+from sz.internal.model.lead_model import lead_pool_map
+from sz.internal.model.account_lever_model import account_lever
+
 city_id = {
     "安徽省": {
         "city": {
@@ -5146,6 +5149,8 @@ DICT_CONFIG = {
     "is_accounting_company": is_accounting_company,
     "customer_needs": customer_needs,
     "business_registration": business_registration,
+    "public_sea": lead_pool_map,
+    "customer_level": account_lever,
 }
 
 ac_account_map = {
