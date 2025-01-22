@@ -38,3 +38,14 @@ def judge_nan(value):
     except:
         ...
     return False
+
+
+def judge_data_list(value):
+    if "[" in str(value) and "]" in str(value):
+        value = str(value).replace("[", "").replace("]", "").replace("'", "").replace('"', "").split(",")
+        if value and value[0]:
+            return value
+        else:
+            return []
+    else:
+        return value

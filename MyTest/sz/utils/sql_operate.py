@@ -37,8 +37,8 @@ class SqlOperate(object):
         except Exception as e:
             print(e)
 
-    def insert_pg(self, query):
+    def insert_pg(self, query, data):
         # 执行查询
-        self.pg_cur.execute(query)
+        self.pg_cur.executemany(query, data)
         # 获取查询结果
-        self.pg_cur.commit()
+        self.pg.commit()

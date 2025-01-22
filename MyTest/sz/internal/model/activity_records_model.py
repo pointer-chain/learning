@@ -1,28 +1,8 @@
-table_id = {
-    'id': '主键ID',
-    'activity_content': '活动记录内容',
-    'publisher': '发布人',
-    'department': '所属部门',
-    'creation_date': '创建日期',
-    'source': '来自',
-    'activity_type': '活动记录类型',
-    'publish_time': '发布时间',
-    'latest_modification_date': '最新修改日',
-    'customer': '客户',
-    'is_agency_company': '是否是代账公司',
-    'employee_id': '员工编号',
-    'location': '位置',
-    'location_details': '位置详情',
-    'visit_target': '拜访对象',
-    'visit_purpose': '拜访目的',
-    'next_action_plan': '下一步行动计划',
-    'activity_id': 'id'
-}
+from sz.internal.model.user_js import user_data
 
 ac_activity_record = {
     'activity_content': 'content',
     'publisher': 'creator_id',
-    'department': 'owner_org_ids',
     'creation_date': 'create_time',
     'activity_type': 'follow_method',
     'latest_modification_date': 'update_time',
@@ -38,7 +18,7 @@ ac_activity_record = {
 ac_activity_record_insert = {
     "content": "activity_content",
     "creator_id": "publisher",
-    "owner_org_ids": "department",
+    # "owner_org_ids": "department",
     "create_time": "creation_date",
     "follow_method": "activity_type",
     "update_time": "latest_modification_date",
@@ -91,7 +71,17 @@ visit_purpose = {
     "其他关键人": 2,
     "会计主管": 3,
     "销售主管": 4,
-    "未见到关键人": 5
+    "未见到关键人": 5,
+    "产品展示": 4,
+    "价格策略谈判": 5,
+    "其他": 10,
+    "初步接洽": 2,
+    "客情维护": 8,
+    "客户上线": 7,
+    "签约": 6,
+    "问题解决(上线后)": 9,
+    "陌生拜访": 1,
+    "需求确认": 3,
 }
 
 activity_dict = {
@@ -99,4 +89,5 @@ activity_dict = {
     "is_agency_company": is_agency_company,
     "visit_target": visit_target,
     "visit_purpose": visit_purpose,
+    "publisher": user_data,
 }
