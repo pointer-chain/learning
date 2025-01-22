@@ -1,11 +1,10 @@
-import math
-
 import xlwt
-import xlrd
 import pandas as pd
 from sz.internal.model.account_model import ac_account_map_
 from sz.internal.model.account_model import DICT_CONFIG
-from sz.internal.model.account_model import city_id
+from sz.utils.excel_data import return_city
+from sz.utils.excel_data import return_address
+from sz.utils.excel_data import judge_nan
 from sz.utils.time_stamp import return_strftime
 
 
@@ -46,51 +45,29 @@ class CustomerXlrd(object):
                 datas = data.get(x)
                 for da in datas:
                     value = da
-                    try:
-                        if math.isnan(value):
-                            self.row += 1
-                            continue
-                    except:
-                        ...
+                    if judge_nan(value):
+                        self.row += 1
+                        continue
                     if x in DICT_CONFIG:
-                        value = DICT_CONFIG.get(x).get(da)
+                        if isinstance(da, list):
+                            pass
+                        else:
+                            value = DICT_CONFIG.get(x).get(da)
                     if "date" in x or "time" in x:
                         value = return_strftime(da)
                     if x == "detailed_address":
-                        value = {"name": da, "search_key": f"{da},"}
-                        value = str(value).replace("'", '"')
+                        value = return_address(da)
                     print(f"正在处理第【{self.row}】行, 第【{self.col}】数据")
                     self.ws.write(self.row, self.col, value)
                     self.row += 1
                 self.col += 1
                 self.row = 1
+        self.ws.write(0, self.col, "city_id")
         province = data.get("province")
         city = data.get("city")
         district = data.get("district")
-        self.ws.write(0, self.col, "city_id")
         for index_city in range(len(province)):
-            city1 = city_id.get(province[index_city], {}).get("id", {})
-            city2 = city_id.get(province[index_city], {}).get("city", {}).get(city[index_city], {}).get("id", {})
-            city3 = city_id.get(province[index_city], {}).get("city", {}).get(city[index_city], {}).get("city", {}).get(district[index_city], {})
-            ids = [x for x in [city1, city2, city3] if x]
-            names_list = [province[index_city], city[index_city], district[index_city]]
-            names = []
-            for x in names_list:
-                try:
-                    if math.isnan(x):
-                        continue
-                except:
-                    ...
-                names.append(x)
-            if not ids:
-                self.row += 1
-                continue
-            res = {
-                "ids": ids,
-                "code": ids[-1],
-                "names": names,
-                "search_key": "".join(names),
-            }
+            res = return_city(province, city, district, index_city)
             print(f"正在处理第【{self.row}】行, 第【{self.col}】数据")
             self.ws.write(self.row, self.col, str(res).replace("'", '"'))
             self.row += 1
