@@ -22,3 +22,10 @@ class Config:
         :return:
         """
         return self.home_url + "/fast_app/cbn/api/v1/region/getList/{num}"
+
+    def get_user(self):
+        """
+        获取页面城市数据url
+        :return:
+        """
+        return self.home_url + "/fast_app/fa/api/v1/livelydata/metabase/mb_user/getList"

@@ -1,5 +1,6 @@
 from sz.internal.model.lead_model import lead_pool_map
 from sz.internal.model.account_lever_model import account_lever
+from sz.internal.model.user_js import user_data
 
 city_id = {
     "安徽省": {
@@ -5151,6 +5152,10 @@ DICT_CONFIG = {
     "business_registration": business_registration,
     "public_sea": lead_pool_map,
     "customer_level": account_lever,
+    "customer_owner": user_data,
+    "creator": user_data,
+    "latest_modifier": user_data,
+    "latest_follow_up_person": user_data,
 }
 
 ac_account_map_ = {

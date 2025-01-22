@@ -50,7 +50,8 @@ class CustomerXlrd(object):
                         continue
                     if x in DICT_CONFIG:
                         if isinstance(da, list):
-                            pass
+                            value = [DICT_CONFIG.get(x).get(da_ele) for da_ele in da]
+                            value = str(value).replace("'", '"')
                         else:
                             value = DICT_CONFIG.get(x).get(da)
                     if "date" in x or "time" in x:

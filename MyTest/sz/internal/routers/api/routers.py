@@ -26,48 +26,21 @@ class SzApi(object):
         print(res.text)
         return res
 
-    def add_account(self, name):
-        data = {
-        "values": {
-            "ac_accountant_count__c": 321,
-            "ac_business_registration__c": 1,
-            "ac_company_name_2__c": "公司名称2",
-            "ac_competitors__c": "竞争对手",
-            "ac_current_accounting_software__c": "现用记账报税软件",
-            "ac_customer_needs__c": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7"
-            ],
-            "ac_is_accounting_company__c": 2,
-            "ac_lead_pool__c": "669092244671461644",
-            "ac_position__c": 1,
-            "ac_total_account_books__c": 123,
-            "account_level_id": "6",
-            "company_name": "姓名",
-            "contact_name": "姓名",
-            "customer_type": 2,
-            "location": {
-                "code": "130303",
-                "ids": [
-                    "13",
-                    "1303",
-                    "130303"
-                ],
-                "names": [
-                    "河北省",
-                    "秦皇岛市",
-                    "山海关区"
-                ]
-            },
-            "org_id": "1",
-            "owner_id": "0J0FWTCAKN5PA",
-            "phone_number": "13395353356",
-        }
-    }
-        res = requests.post(self.config.add_account_url(), data=json.dumps(data), headers=self.header)
-        # TODO 调试
+    def get_user(self):
+        self.header.update({"content-type": "application/json;charset=UTF-8"})
+        data = {"pageSize": 10000, "pageNum": 1, "sort": "id-",
+                "query": "", "filter": {},
+                "quickSearch": {"query": "", "columns": ["id", "nick_name", "name"]},
+                "options": {"fetchButton": True, "viewId": "0H1MRKG5W5Z8Y"}}
+        res = requests.post(self.config.get_user(), data=json.dumps(data), headers=self.header)
+        res = json.loads(res.text)
+        result = res.get("result").get("data")
+        user_dict = {}
+        for x in result:
+            user_dict[x.get('name', {})] = x.get('id', {})
+        print(user_dict)
+
+
+if __name__ == '__main__':
+    sz = SzApi()
+    sz.get_user()
