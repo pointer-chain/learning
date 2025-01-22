@@ -5152,6 +5152,9 @@ DICT_CONFIG = {
     "business_registration": business_registration,
     "public_sea": lead_pool_map,
     "customer_level": account_lever,
+}
+
+USER_CONFIG = {
     "customer_owner": user_data,
     "creator": user_data,
     "latest_modifier": user_data,

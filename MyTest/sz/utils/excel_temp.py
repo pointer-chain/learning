@@ -2,6 +2,8 @@ import xlwt
 import pandas as pd
 from sz.internal.model.account_model import ac_account_map_
 from sz.internal.model.account_model import DICT_CONFIG
+from sz.internal.model.account_model import USER_CONFIG
+from sz.internal.model.user_js import company_data
 from sz.utils.excel_data import return_city
 from sz.utils.excel_data import return_address
 from sz.utils.excel_data import judge_nan
@@ -33,11 +35,14 @@ class CustomerXlrd(object):
 
     def numpy_excel_ac_account(self):
         data = pd.read_excel(self.read_table_name)
+        department_value = None  # 取部门
         # 修改表头
         for x in data.keys():
             if x in ac_account_map_:
                 self.ws.write(self.row, self.col, ac_account_map_.get(x))
                 self.col += 1
+            if x == "department":
+                department_value = data.get(x)
         self.col = 0
         self.row += 1
         for x in data.keys():
@@ -54,6 +59,13 @@ class CustomerXlrd(object):
                             value = str(value).replace("'", '"')
                         else:
                             value = DICT_CONFIG.get(x).get(da)
+                    if x in USER_CONFIG:
+                        if user_id := USER_CONFIG.get(x).get(da):
+                            value = user_id
+                        elif dep := company_data.get(department_value[self.row]):
+                            value = dep
+                        else:
+                            value = "0JJV7CK864FAG"
                     if "date" in x or "time" in x:
                         value = return_strftime(da)
                     if x == "detailed_address":
@@ -76,7 +88,7 @@ class CustomerXlrd(object):
 
     def excel_to_csv(self):
         # 读取Excel文件
-        excel_data = pd.read_excel(self.create_table_name)
+        excel_data = pd.read_excel(self.create_table_name, dtype=str)
         # 将数据保存为CSV文件
         excel_data.to_csv(self.csv_name, index=False)
 
