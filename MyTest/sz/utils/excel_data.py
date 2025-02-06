@@ -30,6 +30,20 @@ def return_city(province, city, district, index_city):
     }
     return str(res).replace("'", '"')
 
+def return_province(province, index_city):
+    p = province[index_city]
+    if isinstance(p, str):
+        for key in city_id.keys():
+            if p in key:
+                id = city_id.get(key, {}).get("id", {})
+                res = {
+                    "ids": [id],
+                    "code": id,
+                    "names": [key],
+                    "search_key": key,
+                }
+                return str(res).replace("'", '"')
+    return None
 
 def judge_nan(value):
     try:
