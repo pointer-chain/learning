@@ -61,12 +61,22 @@ follow_up_status = {
 '未处理': 1,'已转换': 2,'第一次联系': 3,'第二次联系': 4,'第三次联系': 5,'多次联系': 6
 }
 
+status = {
+'自建': 1,'未领取': 2,'已领取': 3,'已转换': 4,'已废弃': 5,'已冻结': 6
+}
+
+return_reason = {
+'电话不存在': 1,'不是代记账公司': 2,'是代账公司': 3, '没有购买需求': 4,'已合作客户': 5,'已经购买其他产品': 6,'价格超过预算': 7,'与分公司重复': 8,'其它': 9,'销售人员离职': 10
+}
+
 leads_dict_config = {
     "household_scale": household_scale,
     "contact_channel": contact_channel,
     "is_accounting_company": is_accounting_company,
     "public_sea": lead_pool_map,
     "follow_up_status": follow_up_status,
+    "status": status,
+    "return_reason": return_reason
 }
 
 lead_user_config = {
@@ -90,9 +100,14 @@ ac_lead_map_ = {
     'public_sea': 'lead_pool',
     'follow_up_status': 'ac_follow_up_status__c',
     'address': 'address',
+    'claim_date': 'ac_collection_time__c',
+    'expiration_date': 'ac_due_time__c',
+    'status': 'ac_status__c',
     'customer': 'ac_customer__c',
     'latest_modification_date': 'update_time',
     'latest_modifier': 'updater_id',
+    'return_reason': 'ac_repossessed_reason__c',
+    'return_reason_description': 'ac_repossessed_description__c',
     'lead_number': 'name',
     'communication_attitude': 'ac_communication_attitude__c',
     'remarks': 'description',
