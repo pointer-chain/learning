@@ -231,3 +231,5 @@
 a.知识库质量：确保知识库的覆盖范围和准确性。
 b.检索模型：选择适合任务的检索模型（如 DPR 或 BM25）。
 c.生成模型：根据任务需求选择合适的生成模型（如 BART 或 T5）。
+
+## [扣子](url=https://www.coze.cn/open/docs/guides/welcome)
