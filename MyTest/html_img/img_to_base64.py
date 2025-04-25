@@ -19,4 +19,4 @@ def img_2_bs(img_full_path):
         data_uri = f"data:{mime_type};base64,{base64_str}"
         print(data_uri)
 if __name__ == '__main__':
-    img_2_bs(r"D:\Local\JS\底部.png")
+    img_2_bs(r"D:\Local\JS\黑龙江\划款.gif")
