@@ -67,13 +67,13 @@ class KpmgSpider(scrapy.Spider):
             return
         # 检查是否包含任何关键词
         contains_keyword = any(keyword in text_content for keyword in self.keywords)
-
         # 提取页面中的所有链接（无论是否包含关键词都继续爬取）
         links = list(set(
             response.urljoin(href)
             for href in response.css('a::attr(href)').extract()
             if self._is_valid_html_url(href)
         ))
+        self.logger.info(f"当前页面: {response.url}, 获取到的链接: {links}")
 
         # 如果包含关键词，则保存数据
         if contains_keyword:

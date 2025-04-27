@@ -91,6 +91,7 @@ class PccpaSpider(scrapy.Spider):
             # 提取页面中的所有链接（无论是否包含关键词都继续爬取）
             links = list(set(text_content))
             # 无论是否包含关键词，都继续爬取下一层
+            self.logger.info(f"当前页面: {response.url}, 获取到的链接: {links}")
             for url in links:
                 yield scrapy.Request(
                     url,

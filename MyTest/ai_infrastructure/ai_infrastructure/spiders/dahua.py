@@ -74,7 +74,7 @@ class DahuaSpider(scrapy.Spider):
             for href in response.css('#content a::attr(href)').extract()
             if self._is_valid_html_url(href)
         ))
-        self.logger.info(f"获取到的链接: {links}")
+        self.logger.info(f"当前页面: {response.url}, 获取到的链接: {links}")
 
         # 如果包含关键词，则保存数据
         if contains_keyword:
